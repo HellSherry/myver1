@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://s0.pstatp.com/cdn/expire-1-M/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+    <script>window.Vue || document.write('<script src="js/vue.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="js/jquery-3.4.1.min.js"><\/script>')</script>
+    <script>window.elementui.js || document.write('<script src="js/elementui.js"><\/script>')</script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script !src=""> window.index.css||document.write('<link rel="stylesheet" href="./style/theme/index.css">')</script>
+    <style>
+        .el-textarea__inner
+        {text-shadow: 0 0 8px rgb(228, 250, 74);}
+    </style>
+</head>
+<body>
+<div id="app" style="width: 80%;margin: 30px auto;position: relative;"  v-loading.fullscreen.lock="fullscreenLoading">
+
+    <el-input-number v-model="no" @change="handleChange" :min="1" :max="2332" label="描述文字"></el-input-number>
+    "{{phone.ttime}}"{{phone.tname}}<br>
+
+
+    <img :src="'1/'+phone.ttime+'题干.png'" alt="">
+    <br>
+    <img  :src="'1/'+phone.ttime+'图片.png'" alt="没有图片可跳过">
+    <el-input
+            type="textarea"
+           autosize
+            placeholder="请输入题干"
+            v-model="phone.question">
+    </el-input>
+    <img :src="'1/'+phone.ttime+'A.png'" alt="">
+    <el-input
+            type="textarea"
+            autosize
+    placeholder="请输入答案1"
+    v-model="phone.answer1">
+    </el-input>
+    <img :src="'1/'+phone.ttime+'B.png'" alt="">
+    <el-button  style="position: absolute;right: 0" @click="phone.answer1=phone.answer1.replace(/\s*/g,'');">去answer1空格</el-button>
+
+    <el-input
+            type="textarea"
+            autosize
+            placeholder="请输入答案2"
+            v-model="phone.answer2">
+    </el-input>    <img :src="'1/'+phone.ttime+'C.png'" alt="">
+
+    <el-button  style="position: absolute;right: 0" @click="phone.answer2=phone.answer2.replace(/\s*/g,'');">去answer2空格</el-button>
+    <el-input
+            type="textarea"
+            autosize
+            placeholder="请输入答案3"
+            v-model="phone.answer3">
+    </el-input>    <img :src="'1/'+phone.ttime+'D.png'" alt="">
+
+    <el-button  style="position: absolute;right: 0" @click="phone.answer3=phone.answer3.replace(/\s*/g,'');">去answer3空格</el-button>
+    <el-input
+            type="textarea"
+            autosize
+            placeholder="请输入答案4"
+            v-model="phone.answer4">
+    </el-input>
+    <el-button  style="position: absolute;right: 0"  @click="phone.answer4=phone.answer4.replace(/\s*/g,'');">去answer4空格</el-button>
+    <div v-show="phone.answer5!==''||phone.answer6!==''">
+        <el-input
+                type="textarea"
+                autosize
+                placeholder="请输入答案5"
+                v-model="phone.answer5">
+        </el-input>
+        <el-input
+                type="textarea"
+                autosize
+                placeholder="请输入答案6"
+                v-model="phone.answer6">
+        </el-input>
+    </div>
+
+            正确答案： {{phone.ranswer}} <br>
+
+    <img :src="'1/'+phone.ttime+'试题解析.png'" alt="没有解析">
+    <el-input
+
+        type="textarea"
+        autosize
+        placeholder="请输入解析"
+        v-model="phone.parse">
+    </el-input>
+
+
+<el-button style="margin: 20px" @click="tijiao">提交</el-button>
+
+
+</div>
+
+</body>
+<script !src="">
+  var Main = {
+    data() {
+      return {
+          fullscreenLoading:false,
+        phone: {},
+          no:1
+      }
+    },
+      mounted() {
+          $.ajax({
+              type: "get",
+              url: "api/aaa?page="+localStorage.getItem("no"),
+              success: (msg) => {
+
+                  this.no=localStorage.getItem("no")
+                  this.phone=JSON.parse(msg)
+              }
+          })
+      },
+    methods:{
+        tijiao(){
+
+
+                $.ajax({
+                    type: "post",
+                    url: "api/update",
+                    contentType: "application/json;charset=utf-8",
+       
+                  
+                     data:JSON.stringify(this.phone),
+                    success: (msg) => {
+                        if (msg.trim()!=='false'){
+                            this.$notify({
+                                title: '成功',
+                                message:"true"+msg,
+                                type: 'success'
+                            });
+                            this.handleChange(++this.no)
+                        }else {
+                            this.$notify.error({
+                                title: '错误',
+                                message: '这是一条错误的提示消息'
+                            });
+                        }
+
+                    }
+                })
+
+        },
+        handleChange(val){
+            $.ajax({
+                type: "get",
+                url: "api/aaa?page="+val,
+                beforeSend: () => this.fullscreenLoading = true
+                ,
+                complete: () => this.fullscreenLoading = false,
+                success: (msg) => {
+                    localStorage.setItem("no",val)
+                    this.phone=msg
+
+                }
+            })
+        }
+
+    }
+  }
+  var Ctor = Vue.extend(Main)
+  new Ctor().$mount('#app')
+</script>
+</html>
