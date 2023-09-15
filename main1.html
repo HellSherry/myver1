@@ -151,7 +151,7 @@
         handleChange(val){
             $.ajax({
                 type: "get",
-                url: "api/aaa.js?page="+val,
+                url: "https://haibara.chunal.cn/api/aaa.js?page="+val,
                 beforeSend: () => this.fullscreenLoading = true
                 ,
                 complete: () => this.fullscreenLoading = false,
