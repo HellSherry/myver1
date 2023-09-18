@@ -13,7 +13,7 @@ module.exports = (req, res) => {
   
       // called when the complete response is received.
       response.on('end', () => {
-        res.send(JSON.parse(todo).url);
+        res.send(JSON.parse(todo));
       });
   
   }).on("error", (error) => {
