@@ -1,4 +1,5 @@
 module.exports = (req, res) => {
+  res.header('access-control-allow-origin','*');
   const { name = 'World' } = req.query
   const https = require('https');
 
@@ -12,7 +13,7 @@ module.exports = (req, res) => {
   
       // called when the complete response is received.
       response.on('end', () => {
-        res.send(JSON.parse(todo));
+        res.send(JSON.parse(todo).url);
       });
   
   }).on("error", (error) => {
