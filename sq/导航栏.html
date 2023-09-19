@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            height: 100px;
+            width: 1360px;
+            border-top: 2px solid;
+            border-bottom: 1px solid;
+            margin: auto;
+        }
+        nav>ul{
+            list-style: none;
+        }
+        ul,li{
+            margin: 0px;
+            padding: 0px;
+        }
+        nav>ul>li{
+            float: left;
+            height: 97px;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 100px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 0px 10px;
+        }
+        nav>ul>li:nth-child(1){
+            margin-right: 30px;
+            padding-top: 9px;
+            box-sizing: border-box;
+            margin-left: 100px;
+            margin-right: 198px;
+        }
+        .botBoe:hover{
+            border-bottom: 3px solid red;
+            cursor: pointer;
+        }
+        .im:hover{
+            cursor: pointer;
+        }
+        .div2{
+            width: 1360px;
+            height: 356px;
+            background-color: white;
+            text-align: center;
+            display: none;
+            position: absolute;
+            top: 102px;
+            left:-485px;
+            line-height: 30px;
+            margin: auto;
+        }
+        .div2>ul{
+            display: inline-block;
+            list-style: none;
+            border-right: 1px solid gray;
+            padding-right: 90px;
+            height: 356px;
+            text-align: left;
+            margin-left: 30px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            vertical-align: top;
+
+        }
+        .botBoe{
+            position: relative;
+        }
+        .div2>ul>li{
+            margin-top: 10px;
+        }
+        #nan:hover>span>.div2{
+            display: block;
+        }
+        .div3{
+            width: 1360px;
+            height: 356px;
+            background-color: white;
+            text-align: center;
+            line-height: 30px;
+            display: none;
+            margin: auto;
+            position: absolute;
+            top: 102px;
+            left:-556px;
+        }
+        .div3>ul{
+            list-style: none;
+            display: inline-block;
+            list-style: none;
+            border-right: 1px solid gray;
+            padding-right: 90px;
+            height: 356px;
+            text-align: left;
+            margin-left: 30px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+        #na:hover>span>.div3{
+            display: block;
+        }
+        .div4{
+            width: 1360px;
+            height: 356px;
+            background-color: white;
+            text-align: center;
+            line-height: 30px;
+            display: none;
+            margin: auto;
+            position: absolute;
+            top: 102px;
+            left:-628px;
+        }
+        .div4>ul{
+            list-style: none;
+            display: inline-block;
+            list-style: none;
+            border-right: 1px solid gray;
+            padding-right: 90px;
+            height: 356px;
+            text-align: left;
+            margin-left: 30px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+        #n:hover>span>.div4{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+        <nav >
+            <ul>
+                <li>
+                    <img src="https://img.fishfay.com/theme/images/logo/logo-anta-r-02.svg" width="53px" height="29px">
+                </li>
+                <li class="botBoe">须向未来</li>
+                <li class="botBoe" id="nan">
+                   <span>
+                    男子
+                    <div class="div2">
+                        <ul style="padding-left: 50px;">
+                            <li><h4>所有鞋类</h4></li>
+                            <li>运动鞋</li>
+                            <li>跑鞋</li>
+                            <li>篮球鞋</li>
+                            <li>休闲鞋</li>
+                            <li>休闲鞋</li>
+                            <li>户外综训鞋</li>
+                        </ul>
+                        <ul>
+                            <li><h4>所有服装</h4></li>
+                            <li>套头卫衣</li>
+                            <li>外套夹克</li>
+                            <li>羽绒服/马甲</li>
+                            <li>短袖T恤</li>
+                            <li>长裤</li>
+                            <li>运动短裤</li>
+                        </ul>
+                        <ul>
+                            <li><h4>所有配件</h4></li>
+                            <li>包类</li>
+                            <li>运动袜子</li>
+                        </ul>
+                        <ul style="border-right: none;">
+                            <li><h4>运动项目</h4></li>
+                            <li>跑步</li>
+                            <li>篮球</li>
+                            <li>综训</li>
+                            <li>生活</li>
+                            <li>健身</li>
+                        </ul>
+                </div>
+                    </span> 
+                </li>
+                 
+                <li class="botBoe" id="na">
+                   <span>
+                        女子
+                        <div class="div3">
+                            <ul style="padding-left: 50px;">
+                                <li><h4>所有鞋类</h4></li>
+                                <li>跑鞋</li>
+                                <li>休闲鞋</li>
+                                <li>板鞋</li>
+                                <li>棉鞋</li>
+                            </ul>
+                            <ul>
+                                <li><h4>所有服装</h4></li>
+                                <li>羽绒服</li>
+                                <li>套头卫衣</li>
+                                <li>外套/夹克</li>
+                                <li>长裤</li>
+                                <li>短信T恤</li>
+                                <li>运动短裤</li>
+                            </ul>
+                            <ul style="border: none;">
+                                <li><h4>所有配件</h4></li>
+                                <li>包类</li>
+                                <li>运动袜类</li>
+                            </ul>
+                        </div>
+                    </span> 
+                </li>
+                <li class="botBoe" id="n">
+                   <span>
+                        儿童
+                        <div class="div4">
+                            <ul style="padding-left: 50px;">
+                                <li>新品上市</li>
+                                <li>男中大童</li>
+                                <li>女中大童</li>
+                                <li>男小童</li>
+                                <li>女小童</li>
+                                <li>婴童</li>
+                            </ul>
+                            <ul>
+                                <li><h4>所有鞋类</h4></li>
+                                <li>跑鞋</li>
+                                <li>篮球鞋</li>
+                                <li>休闲鞋</li>
+                                <li>板鞋</li>
+                                <li>足球鞋</li>
+                            </ul>
+                            <ul>
+                                <li><h4>所有服装</h4></li>
+                                <li>套头卫衣</li>
+                                <li>羽绒服</li>
+                                <li>短袖T恤</li>
+                                <li>运动短裤</li>
+                                <li>长裤</li>
+                            </ul>
+                            <ul>
+                                <li><h4>所有配件</h4></li>
+                                <li style="border: none;">包类</li>
+                            </ul>
+                        </div>
+                    </span> 
+                </li>
+                <li class="botBoe">安踏儿童</li>
+                <li class="botBoe">品牌文化</li>
+                <li class="botBoe">观赏视频</li>
+                <li class="botBoe">联系我们</li>
+                <li>
+                    <img src="./img/cha zhao.png" alt="" width="22px" height="22px" style="vertical-align: middle;" class="im">
+                    <input type="text">
+                </li>
+            </ul>
+        </nav>
+       
+</body>
+</html>                                                                                              

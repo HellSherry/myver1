@@ -1,0 +1,324 @@
+
+ <!DOCTYPE html>
+    <html>
+	<head>
+		<meta charset="utf-8">
+		<title>云书网-“购物”+“服务”智慧新生活</title>
+		<link rel="shortcut icon" href="img/log1.png" type="image/x-icon">
+		<style>
+			body{
+				font-family: "microsoft yahei";
+				background-color: rgb(248,248,248);
+				font-size: 12px;
+			}
+			div.big{
+				max-width: 860px;
+				height: 450px;
+				
+				margin: 0 auto;
+			}
+			div.title{
+				max-width: 860px;
+				height: 76px;
+			}
+			div.bottom{
+				background-color: white;
+				border: 1px solid #C0C0C0;
+				border-top: 3px solid #f90;
+			}
+			div.small{
+				max-width: 333px;
+				margin: 0 auto;
+			}
+			div.text{
+				float: left;
+				font-size: 18px;
+				color: rgb(102,105,102);
+				line-height: 76px;
+			}
+			div.text2{
+				float: left;
+				line-height: 20px;
+			}
+			div.input{
+				margin: 0 auto;
+				margin-top: 50px;
+				max-width: 333px;
+			}
+			div.liwu{
+				font-size: 14px;
+				margin: 0 auto;
+				line-height: 20px;
+			}
+			div.phone{
+				border: 1px solid #C0C0C0;
+				max-width: 333px;
+				height: 37px;
+				margin-bottom: 28px;
+			}
+			div.phone_1{
+				height: 34px;
+				width: 250px;
+				float: left;
+			}
+			div.phone_2{
+				height: 34px;
+				width: 120px;
+				float: left;
+			}
+			div.phone_3{
+				line-height: 36px;
+				width: 120px;
+				float: right;
+				background-color: rgb(245,245,245);
+				text-align: center;
+				
+			}
+			div.submit{
+				width: 333px;
+				margin-top: 60px;
+				height: 37px;
+			}
+			div.qiye{
+				margin-top: 5px;
+				width: 333px;
+				height: 19px;
+				margin-bottom: 25px;
+			}
+			div.list{
+				width: 333px;
+				font-size: 10px;
+			}
+			a.logo{
+				float: left;
+				margin-right: 20px;
+			}
+			a.login{
+				color: #333333;
+				float: right;
+				margin-top: 50px;
+			}
+			a.qiye{
+				
+				color: #ff6600;
+				line-height: 19px;
+			}
+			a.login:hover,a.code:hover,a.list:hover{
+				color: rgb(225,105,0);
+			}
+			
+			a.code{
+				color: #333333;
+				font-size: 13px;
+				
+			}
+			a.list{
+				color: #333333;
+			}
+			img.liwu{
+				width: 18px;
+				height: 18px;
+				float: left;
+			}
+			img.home{
+				width: 16px;
+				height: 16px;
+				
+			}
+			label.head{
+				float: left;
+				width: 70px;
+				margin-left: 8px;
+				line-height: 37px;
+			}
+			input.phone{
+				height: 100%;
+				width: 100%;
+				
+			}
+			input.submit{
+				width: 100%;
+				height: 100%;
+				background-color: rgb(255,85,0);
+			}
+			input{
+				border: 0px;
+				background: 0px;
+				outline: 0;
+				background-color: white);
+			}
+			input[placeholder]{
+				font-family:"microsoft yahei" ;
+				font-size: 12px;
+				color: rgb(202,202,202);
+			}
+			input[value]{
+				font-size: 18px;
+				color: white;
+			}
+			a{
+				text-decoration:none;
+			}
+			p.list{
+				text-align: center;
+			}
+			p.list2{
+				text-align: center;
+				color: #b2b2b2;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="big">
+			<div class="title">
+				<a href="新华书店首页.html" class="logo"><img src="img/666.gif" style="vertical-align: middle;" height="60px"></a>
+				<a href="index.html" class="login">我已经注册，马上登录></a>
+				<div class="text">
+					欢迎注册
+				</div>
+			</div>
+			<div class="bottom">
+				
+				<div class="input">
+					<div class="liwu">	
+						     <img src="./img/12.png" class="liwu"/>
+						
+						
+						<div class="text2"></div>
+						注册领<strong style="color: #ff4400;">199</strong>元大礼包
+					</div>
+					<br/>
+					<form action="新华书店首页.html" onsubmit="return checkInfo()" >
+						<div class="phone">
+						 <label class="head">手机号码</label>
+						 <div class="phone_1">
+							 <input type="text" class="phone" maxlength="11" placeholder="建议使用常用的手机号" id="sjh"/>
+						 </div>
+						 </div>
+						 <div class="phone">
+						 <label class="head">手机验证码</label> 
+						 <div class="phone_2">
+						 							 <input type="text" class="phone" placeholder="请输入手机验证码"/>
+						 </div>
+						 <div class="phone_3">
+						 							 <a href="" class="code">获取短信验证码</a>
+						 </div>
+						 </div>
+						 <div class="phone">
+							 <label class="head">设置密码</label>
+							 <div class="phone_1">
+								  <input type="password" class="phone" maxlength="11" placeholder="请输入密码" id="mm"/>
+							 </div>
+						 </div>
+						 <div class="submit">
+						 	<input type="submit"  value="提交注册"   class="submit"/>
+						 </div>
+						<div class="qiye">
+							<a href="#" class="qiye">
+								<img src="./img/13.png" class="home" style="vertical-align: middle;">
+								
+							企业会员注册></a>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+			<div class="list1">
+				<p class="list">
+								<a href="" class="list">苏宁互联&nbsp;
+								<span>|</span>&nbsp;苏宁金融&nbsp;
+								<span>|</span>&nbsp;苏宁支付&nbsp;
+								<span>|</span>&nbsp;PP视频&nbsp;
+								<span>|</span>&nbsp;红孩子&nbsp;
+								<span>|</span>&nbsp;苏宁物流&nbsp;
+								<span>|</span>&nbsp;零售云&nbsp;
+								<span>|</span>&nbsp;知识产权举报&nbsp;
+								;<span>|</span>&nbsp;投资者关系&nbsp;
+								<span>|</span>&nbsp;苏宁智能&nbsp;
+								<span>|</span>&nbsp;苏宁易彩云&nbsp;
+								</a>
+							</p>
+							<p class="list">
+								<a href="" class="list">联系我们&nbsp;
+								<span>|</span>&nbsp;&nbsp;诚聘英才&nbsp;&nbsp;
+								<span>|</span>&nbsp;&nbsp;合作招商&nbsp;&nbsp;
+								<span>|</span>&nbsp;&nbsp;广告平台&nbsp;&nbsp;
+								<span>|</span>&nbsp;&nbsp;苏宁联盟&nbsp;&nbsp;
+								<span>|</span>&nbsp;&nbsp;鹊桥联盟&nbsp;&nbsp;
+								<span>|</span>&nbsp;&nbsp;苏宁招标&nbsp;&nbsp;
+								
+								<span>|</span>&nbsp;&nbsp;隐私政策&nbsp;&nbsp;
+								<span>|</span>&nbsp;&nbsp;用户体验提升计划&nbsp;&nbsp;
+								<span>|</span>&nbsp;&nbsp;股东会员认证</a>
+							</p>
+							<p class="list2">
+								<a>Copyright© 2020-2023深圳市云网万店电子商务有限公司版权所有&nbsp;<span>|</span>&nbsp;
+								<img src="img/14.png" width="18px" height="18px" style="vertical-align: middle;"/>&nbsp苏公网安备 32010202010078号
+								&nbsp;<span>|</span>&nbsp;粤ICP备2021027996号
+								</a>
+							</p>
+							<p class="list2">
+								<a>
+									江苏苏宁易购增值电信许可证&nbsp;<span>|</span>&nbsp;出版物经营许可证新出发苏批字第A-243号&nbsp;<span>|</span>&nbsp;互联网药品信息服务资格证书（苏）-非经营性-2021-0032
+								</a>
+							</p>
+							<p class="list2">
+								<a>
+									经营证照&nbsp;
+									<span>|</span>&nbsp;互联网违法和不良信息举报邮箱：kfpt-yy@cnsuning.com&nbsp;<span>|</span>&nbsp;
+									举报电话：02566996699-865948
+								</a>
+							</p>
+							<p class="list2">
+								<a>
+									医疗器械网络交易服务第三方平台备案凭证-（苏）网械平台备字（2018）第00052号&nbsp;
+									<span>|</span>&nbsp;变更公告
+									<span>|</span>&nbsp;云网店营业执照
+									<span>|</span>&nbsp;合字B2-20210115
+									
+								</a>
+								
+							</p>
+							<p class="list2">
+								<a >
+									网信算备440303176429902220013号
+								</a>
+							</p>
+							<p class="list2">
+								<a>
+									本网站直接或间接向消费者推销商品或者服务的商业宣传均属于&nbsp;"广告"&nbsp; （包装及参数、售后保障等商品信息除外）
+								</a>
+							</p>
+							<p align="center">
+								<a>
+									<img src="./img/aria.png" alt="" width="76px" height="24px">
+									<img src="img/unicom.png" />
+									<img src="./img/dianxin.jpg" alt="">
+									<img src="./img/yidong-20221009.png" alt="">
+									<img src="./img/dianzizhizhao.png" alt="" width="24px" height="24px">
+									<img src="./img/netsafe1.png" alt=""  width="76px" height="24px">
+									<img src="./img/netsafe2.png" alt="" width="76px" height="24px">
+									
+								</a>
+							</p>
+			</div>
+		</div>
+	</body>
+	<script>
+	        function checkInfo(){
+	        			  var sjh=document.getElementById("sjh").value;
+	        			  if(sjh == ""){ 
+	        			  	alert("手机号不能为空");
+	        			  	return false;
+	        			  }
+	        			  var mm=document.getElementById("mm").value;
+	        			  if(mm == ""){
+	        				  alert("密码不能为空");
+	        				  return false;
+	        			  }
+	        			  alert("注册成功！");
+						  return true;
+						  
+	        }
+	    </script>
+    </html>

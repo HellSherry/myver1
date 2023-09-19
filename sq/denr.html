@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>denr</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#box3 {
+				width: 506px;
+				    height: 579px;
+				border: 1px solid black;
+				background-color: aqua;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			.e {
+				font-size: 12px;
+				color: #f5a21e;
+			}
+
+			.v{
+				text-align: center;
+				font-weight: bold;
+			}
+			.v>td{
+				border-right: 1px solid #818181;
+			}
+			.v>td:nth-child(3){
+				border: 0px;
+			}
+			.v>td:hover {
+				color: red;
+			}
+
+			.b {
+				width: 38px;
+				height: 38px;
+				background-color: #f3f3f3;
+				border-right: 1px solid #e5e5e5;
+				position: absolute;
+				left: 48px;
+				top: 135px;
+				box-sizing: border-box;
+			}
+
+			.b>img {
+				width: 16px;
+				height: 20px;
+				margin-left: 10px;
+				margin-top: 10px;
+				box-sizing: border-box;
+			}
+
+			.j {
+				width: 365px;
+				height: 38px;
+				border: 1px solid #f3f3f3;
+				margin-top: -7px;
+				margin-left: 86px;
+				box-sizing: border-box;
+			}
+
+			.h {
+				width: 38px;
+				height: 38px;
+				background-color: #f3f3f3;
+				border-right: 1px solid #e5e5e5;
+				position: absolute;
+				left: 48px;
+				top: 218px;
+				box-sizing: border-box;
+			}
+
+			.h>img {
+				width: 16px;
+				height: 14px;
+				margin-left: 12px;
+				margin-top: 10px;
+				box-sizing: border-box;
+			}
+
+			#annu {
+				width: 403px;
+				height: 38px;
+				margin-left: 48px;
+				border: 0px;
+				background-color: #eee;
+				color: white;
+			}
+
+			#fudon {
+				position: absolute;
+				top: 353px;
+				right: 53px;
+				font-size: 12px;
+				color: #818181;
+				box-sizing: border-box;
+			}
+			.shui1{
+				width: 155px;
+				position: relative;
+				left: 48px;
+				box-sizing: border-box;
+			}
+			.shui{
+				width: 155px;
+				position: relative;
+				right: 48px;
+				box-sizing: border-box;
+			}
+			.tupian>td>img{
+				width: 31px;
+				height: 30px;
+			}
+			.tupian>td{
+				text-align: center;
+			}
+			.wenzi{
+				color: #BE2038;
+				font-size: 12px;
+				margin-left: 50px;
+				box-sizing: border-box;
+			}
+			.wenzi>img{
+				width: 16px;
+				height: 16px;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box3">
+			<table style="width: 510px;height: 583px; margin-left: -2px;margin-top: -2px;">
+				<tr>
+					<td colspan="3" style="padding-left: 43px;background-color:  #fffde9;">
+						<img src="img/感叹号中.png" alt="" style="width: 14px;height: 14px;vertical-align: middle;"><span
+							class="e">云书网不会以任何理由要求您转账汇款,谨防诈骗</span>
+					</td>
+				</tr>
+				<tr class="v">
+					<td style="color: red;">短信登录</td>
+					<td>账号登录</td>
+					<td>扫码登录</td>
+				</tr>
+				<tr>
+					<td style="border-top: 1px solid gray;" colspan="3"></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<p class="b"><img src="img/mobile.png" alt=""></p><input type="text" placeholder="请输入手机号"
+							class="j">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<p class="h"><img src="img/envelope.png" alt=""></p><input type="text" placeholder="请输入验证码"
+							class="j">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3"><button id="annu">登录</button></td>
+				</tr>
+				<tr>
+					<td>
+						<p id="fudon">忘记密码</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="shui1">
+						<hr>
+					</td>
+					<td align="center" style="color:  #818181;">第三方登录</td>
+					<td class="shui">
+						<hr>
+					</td>
+				</tr>
+				<tr class="tupian">
+					<td><img src="img/weixin.png" alt=""></td>
+					<td><img src="img/qq.png" alt=""></td>
+					<td><img src="img/weibo.png" alt=""></td>
+				</tr>
+				<tr>
+					<td colspan="3" ><p class="wenzi"><img src="img/regis-icon.png" alt="">免费注册</p></td>
+				</tr>
+
+			</table>
+		</div>
+	</body>
+</html>

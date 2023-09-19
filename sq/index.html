@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>云书网-“购物”+“服务”智慧新生活</title>
+		<link rel="shortcut icon" href="img/log1.png" type="image/x-icon">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				height: 1000px;
+				background-color: whitesmoke;
+			}
+
+			#min {
+				width: 800px;
+				height: 50px;
+				background-color: whitesmoke;
+			}
+
+			#max {
+				width: 800px;
+				height: 500px;
+				background-color: white;
+				margin: 0 auto;
+			}
+
+			.ss {
+				font-size: 40px;
+				color: crimson;
+				text-align: center;
+				line-height: 50px;
+			}
+
+			.zz {
+				font-size: 20px;
+				text-align: center;
+
+			}
+
+			.cc {
+				width: 360px;
+				height: 40px;
+				text-align: left;
+
+			}
+
+			.vv {
+				width: 360px;
+				height: 40px;
+
+			}
+
+			.mm {
+				width: 362px;
+				height: 42px;
+				background-color: orangered;
+				color: white;
+				border: none;
+				text-align: center;
+
+			}
+
+			span {
+				color: orangered;
+				text-align: center;
+
+			}
+
+			.xx {
+				text-align: right;
+
+			}
+
+			table {
+				margin: 0 auto;
+			}
+
+			td {
+				height: 55px;
+			}
+
+			p {
+
+				color: gray;
+				font-size: 10px;
+			}
+
+			img {
+				line-height: 55px;
+			}
+
+			footer {
+				width: 100%;
+				height: 500px;
+			}
+
+			p.list {
+				text-align: center;
+			}
+
+			p.list2 {
+				text-align: center;
+				color: #b2b2b2;
+			}
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+		</style>
+		<script>
+			function checkInfo() {
+				var uname = document.getElementById("uname").value;
+				if (uname == "") {
+					alert("用户名不能为空");
+					return;
+				}
+				var pwd = document.getElementById("pwd").value;
+				if (pwd == "") {
+					alert("密码不能为空");
+					return;
+				}
+				alert("验证通过，保存成功");
+				window.location.href = "新华书店首页.html"
+			}
+		</script>
+	</head>
+	<body>
+		<div id="min">&nbsp;</div>
+		<div id="max">
+			<table>
+				<tr>
+					<td>
+						<header class="ss"><a href="新华书店首页.html"><img src="img/666.gif" alt=""></a></header>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<header class="zz"><span>账号密码登录</span> | 手机验证码登录</header>
+					</td>
+				</tr>
+				<tr>
+					<td><input class="cc" type="text" id="uname" placeholder="邮件/手机号/用户名"></td>
+				</tr>
+				<tr>
+					<td><input class="vv" type="password" id="pwd" placeholder="密码为8-16个字符(数字、大小写字母、符号至少包含三种)"></td>
+				</tr>
+				<tr>
+					<a href="新华书店首页.html">
+						<td><button class="mm" onclick="checkInfo()">立即登录</button></td>
+					</a>
+				</tr>
+				<tr>
+					<td>
+						<p class="xx"><a href="zhuce.html"><span>注册新账号</span></a>| 忘记密码?</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>其他方式登录:</span>
+						<img src="./img/微信.png" alt="" style="width: 25px; height: 25px;">
+						<img src="./img/支付宝 (2).png" alt="" style="width: 25px; height: 25px;">
+						<img src="./img/微博.png" alt="" style="width: 25px; height: 25px;">
+						<img src="./img/qq.png" alt="" style="width: 25px; height: 25px;">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<footer>
+			<div class="list1">
+				<p class="list">
+					<a href="" class="list">苏宁互联&nbsp;
+						<span>|</span>&nbsp;苏宁金融&nbsp;
+						<span>|</span>&nbsp;苏宁支付&nbsp;
+						<span>|</span>&nbsp;PP视频&nbsp;
+						<span>|</span>&nbsp;红孩子&nbsp;
+						<span>|</span>&nbsp;苏宁物流&nbsp;
+						<span>|</span>&nbsp;零售云&nbsp;
+						<span>|</span>&nbsp;知识产权举报&nbsp;
+						;<span>|</span>&nbsp;投资者关系&nbsp;
+						<span>|</span>&nbsp;苏宁智能&nbsp;
+						<span>|</span>&nbsp;苏宁易彩云&nbsp;
+					</a>
+				</p>
+				<p class="list">
+					<a href="" class="list">联系我们&nbsp;
+						<span>|</span>&nbsp;&nbsp;诚聘英才&nbsp;&nbsp;
+						<span>|</span>&nbsp;&nbsp;合作招商&nbsp;&nbsp;
+						<span>|</span>&nbsp;&nbsp;广告平台&nbsp;&nbsp;
+						<span>|</span>&nbsp;&nbsp;苏宁联盟&nbsp;&nbsp;
+						<span>|</span>&nbsp;&nbsp;鹊桥联盟&nbsp;&nbsp;
+						<span>|</span>&nbsp;&nbsp;苏宁招标&nbsp;&nbsp;
+
+						<span>|</span>&nbsp;&nbsp;隐私政策&nbsp;&nbsp;
+						<span>|</span>&nbsp;&nbsp;用户体验提升计划&nbsp;&nbsp;
+						<span>|</span>&nbsp;&nbsp;股东会员认证</a>
+				</p>
+				<p class="list2">
+					<a>Copyright© 2020-2023深圳市云网万店电子商务有限公司版权所有&nbsp;<span>|</span>&nbsp;
+						<img src="./img/14.png" width="18px" height="18px" style="vertical-align: middle;" />&nbsp;苏公网安备
+						32010202010078号
+						&nbsp;<span>|</span>&nbsp;粤ICP备2021027996号
+					</a>
+				</p>
+				<p class="list2">
+					<a>
+						江苏苏宁易购增值电信许可证&nbsp;<span>|</span>&nbsp;出版物经营许可证新出发苏批字第A-243号&nbsp;<span>|</span>&nbsp;互联网药品信息服务资格证书（苏）-非经营性-2021-0032
+					</a>
+				</p>
+				<p class="list2">
+					<a>
+						经营证照&nbsp;
+						<span>|</span>&nbsp;互联网违法和不良信息举报邮箱：kfpt-yy@cnsuning.com&nbsp;<span>|</span>&nbsp;
+						举报电话：02566996699-865948
+					</a>
+				</p>
+				<p class="list2">
+					<a>
+						医疗器械网络交易服务第三方平台备案凭证-（苏）网械平台备字（2018）第00052号&nbsp;
+						<span>|</span>&nbsp;变更公告
+						<span>|</span>&nbsp;云网店营业执照
+						<span>|</span>&nbsp;合字B2-20210115
+
+					</a>
+
+				</p>
+				<p class="list2">
+					<a>
+						网信算备440303176429902220013号
+					</a>
+				</p>
+				<p class="list2">
+					<a>
+						本网站直接或间接向消费者推销商品或者服务的商业宣传均属于&nbsp;"广告"&nbsp; （包装及参数、售后保障等商品信息除外）
+					</a>
+				</p>
+				<p align="center">
+					<a>
+						<img src="./img/aria.png" alt="" width="66px" height="24px">
+						<img src="./img/unicom.png" width="76px" height="24px">
+						<img src="./img/dianxin.jpg" alt="" width="76px" height="24px">
+						<img src="./img/netsafe1.png" alt="" width="76px" height="24px">
+						<img src="./img/dianxin (1).jpg" alt="" width="76px" height="24px">
+						<img src="./img/dianzizhizhao.png" alt="" width="24px" height="24px">
+						<img src="./img/netsafe2.png" alt="" width="144px" height="24px">
+						<img src="./img/netsafe3 (1).png" alt="" width="166px" height="24px">
+
+					</a>
+				</p>
+			</div>
+			</div>
+		</footer>
+	</body>
+</html>

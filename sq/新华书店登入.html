@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>云书网-“购物”+“服务”智慧新生活</title>
+		<link rel="shortcut icon" href="img/1.png" type="image/x-icon">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#box1 {
+				width: 1496px;
+				height: 90px;
+				position: relative;
+				box-sizing: border-box;
+			}
+
+			.tr>td:nth-child(2) {
+				color: gray;
+				font-weight: bold;
+				font-size: 25px;
+			}
+
+			.tr>td:nth-child(1) {
+				border-right: 2px solid gainsboro;
+			}
+
+			.biaog {
+				padding-left: 80px;
+				padding-top: 20px;
+				box-sizing: border-box;
+			}
+
+			.tr>td {
+				width: 140px;
+			}
+
+			#box3 {
+				width: 415px;
+				height: 449px;
+				border: 1px solid gainsboro;
+				background-color: white;
+				margin: 0 auto;
+				position: relative;
+				top: -475px;
+				left: 370px;
+				box-sizing: border-box;
+			}
+
+			.e {
+				font-size: 12px;
+				color: #f5a21e;
+			}
+
+			.v {
+				text-align: center;
+			}
+
+			.v>td {
+				border-right: 1px solid gainsboro;
+				font-size: 16px;
+			}
+
+			.v>td:nth-child(3) {
+				border: 0px;
+			}
+
+			.v>td:hover {
+				color: #BE2038;
+				font-weight: bold;
+			}
+
+			.b {
+				width: 38px;
+				height: 38px;
+				background-color: #f3f3f3;
+				border-right: 1px solid #e5e5e5;
+				position: absolute;
+				left: 48px;
+				top: 98px;
+				box-sizing: border-box;
+			}
+
+			.b>img {
+				width: 16px;
+				height: 20px;
+				margin-left: 10px;
+				margin-top: 10px;
+				box-sizing: border-box;
+			}
+
+			.j {
+				width: 300px;
+				height: 38px;
+				border: 1px solid #f3f3f3;
+				margin-top: -7px;
+				margin-left: 85px;
+				box-sizing: border-box;
+			}
+
+			.h {
+				width: 38px;
+				height: 38px;
+				background-color: #f3f3f3;
+				border-right: 1px solid #e5e5e5;
+				position: absolute;
+				left: 48px;
+				top: 161px;
+				box-sizing: border-box;
+			}
+
+			.h>img {
+				width: 16px;
+				height: 14px;
+				margin-left: 12px;
+				margin-top: 10px;
+				box-sizing: border-box;
+			}
+
+			#annu {
+				width: 336px;
+				height: 38px;
+				margin-left: 48px;
+				border: 0px;
+				background-color: #eee;
+				color: white;
+			}
+
+			#fudon {
+				position: absolute;
+				top: 275px;
+				right: 30px;
+				font-size: 12px;
+				color: #818181;
+				box-sizing: border-box;
+			}
+
+			.shui1 {
+				padding-left: 50px;
+				width: 5px;
+			}
+
+			.shui {
+				width: 5px;
+				padding-right: 50px;
+			}
+
+			.tupian>td>img {
+				width: 31px;
+				height: 30px;
+			}
+
+			.tupian>td {
+				text-align: center;
+			}
+
+			.wenzi {
+				color: #BE2038;
+				font-size: 12px;
+				margin-left: 50px;
+				box-sizing: border-box;
+			}
+
+			.wenzi>img {
+				width: 16px;
+				height: 16px;
+				vertical-align: middle;
+			}
+
+			.fudon2 {
+				position: absolute;
+				right: 35px;
+				top: 170px;
+				width: 100px;
+				font-size: 12px;
+				color: #818181;
+				border-left: 1px solid whitesmoke;
+				text-align: right;
+				box-sizing: border-box;
+			}
+
+			.wenzi2>td>img {
+				vertical-align: middle;
+				width: 36px;
+				height: 36px;
+			}
+
+			.wenzi2>td {
+				font-weight: bold;
+				font-size: 18px;
+				padding-right: 100px;
+				height: 70px;
+			}
+
+			.wenzi2 {
+				width: 1500px;
+				border-bottom: 1px solid gainsboro;
+			}
+
+			.wenzi2>td:nth-child(1) {
+				padding-left: 110px;
+				box-sizing: border-box;
+			}
+
+			.wenzi2 {
+				position: absolute;
+				left: 20px;
+				top: 655px;
+			}
+
+			dl {
+				float: left;
+				padding-left: 150px;
+			}
+			dl>dt:nth-child(1){
+				font-weight: bold;
+				font-size: 14px;
+			}
+			.jiudui1 {
+				position: absolute;
+				top: 730px;
+				left: 65px;
+				box-sizing: border-box;
+			}
+			dt{
+				font-size: 12px;
+				padding-top: 20px;
+			}
+			.jiudui2 {
+				position: absolute;
+				top: 730px;
+				left: 288px ;
+				box-sizing: border-box;
+			}
+			.jiudui3 {
+				position: absolute;
+				top: 730px;
+				left: 499px;
+				 box-sizing: border-box;
+			}
+			.jiudui4 {
+				position: absolute;
+				top:  730px;
+				left: 730px;
+				 box-sizing: border-box;
+			}
+			.jiudui5 {
+				position: absolute;
+				top:  730px;
+				left: 941px;
+				 box-sizing: border-box;
+			}
+			.kuan>td{
+				width:95px;
+				text-align: center;
+				font-size: 14px;
+				border-right: 1px solid gainsboro;
+			}
+			.kuan1>td{
+				font-size: 12px;
+				width: 232px;
+			}
+			.kuan2>td:nth-child(1){
+				width: 120px;
+				font-size: 12px;
+			}
+			.kuan2>td:nth-child(2){
+				width: 290px;
+				font-size: 12px;
+			}
+			.kuan2>td:nth-child(3){
+				width: 150px;
+				font-size: 12px;
+			}
+			.kuan2>td:nth-child(4){
+				width: 120px;
+				font-size: 12px;
+			}
+			.kuan3>td{
+			padding-left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box1">
+				<table class="biaog">
+					<tr class="tr">
+						<td><img src="img/CgoVcmFfrbeAc_D4AADXNSqwP_U618.gif" width="190px" height="45px" alt=""></td>
+						<td style="text-align: right;">欢迎登入</td>
+					</tr>
+				</table>
+			</div>
+			<p style="width: 1496px;height: 514px;"><img src="img/CgoVcmTlbGiAVtduAAl3fJ-vrko581.png" alt=""></p>
+			<div id="box3">
+				<table style="width: 415px;height: 445px; margin-left: -1px;margin-top: -2px;">
+					<tr>
+						<td colspan="3" style="padding-left: 48px;background-color:  #fffde9;">
+							<img src="img/感叹号中.png" alt=""
+								style="width: 14px;height: 14px;vertical-align: middle;"><span
+								class="e">云书网不会以任何理由要求您转账汇款,谨防诈骗</span>
+						</td>
+					</tr>
+					<tr class="v">
+						<td style="color: #BE2038;font-weight: bold;">短信登录</td>
+						<td style="width: 5px;">账号登录</td>
+						<td>扫码登录</td>
+					</tr>
+					<tr>
+						<td style="border-top: 1px solid gainsboro;" colspan="3"></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<p class="b"><img src="img/mobile.png" alt=""></p><input type="text" placeholder="请输入手机号"
+								class="j">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<p class="h"><img src="img/envelope.png" alt=""></p><input type="text" placeholder="请输入验证码"
+								class="j">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3"><button id="annu">登录</button></td>
+					</tr>
+					<tr>
+						<td class="fudon2">获取验证码</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="fudon">忘记密码</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="shui1">
+							<hr>
+						</td>
+						<td align="center" style="color:  #818181;">第三方登录</td>
+						<td class="shui">
+							<hr>
+						</td>
+					</tr>
+					<tr class="tupian">
+						<td><img src="img/weixin.png" alt=""></td>
+						<td><img src="img/qq.png" alt=""></td>
+						<td><img src="img/weibo.png" alt=""></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<p class="wenzi"><img src="img/regis-icon.png" alt="">免费注册</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<table>
+				<tr class="wenzi2">
+					<td><img src="img/bottom-img-one.png" alt=""> 专业服务 所托必达</td>
+					<td><img src="img/bottom-img-two.png" alt="">精挑细选 品质保障 </td>
+					<td><img src="img/bottom-img-three.png" alt="">特色鲜明 追求卓越</td>
+					<td><img src="img/bottom-img-fore.png" alt="">新华心购 全程无忧</td>
+				</tr>
+			</table>
+			<div class="box1">
+				<dl class="jiudui1">
+					<dt>购物指南</dt>
+					<dt>云彩云朵介绍</dt>
+					<dt>联系客服</dt>
+					<dt>购物流程</dt>
+					<dt>注册协议</dt>
+				</dl>
+				<dl class="jiudui2">
+					<dt>配送方式</dt>
+					<dt>物流查询</dt>
+					<dt>验货与签收</dt>
+				</dl>
+				<dl class="jiudui3">
+					<dt>支付方式</dt>
+					<dt>在线支付</dt>
+					<dt>读书卡支付</dt>
+					<dt>交易条款</dt>
+					<dt>交易安全防诈...</dt>
+				</dl>
+				<dl class="jiudui4">
+					<dt>售后服务</dt>
+					<dt>价格保护</dt>
+					<dt>发票制度</dt>
+					<dt>退换货申请</dt>
+					<dt>取消订单</dt>
+					<dt>售后政策</dt>
+				</dl>
+				<dl class="jiudui5">
+					<dt>商家服务</dt>
+					<dt>商家管理规则</dt>
+					<dt>资质标准</dt>
+					<dt>入驻协议</dt>
+					<dt>类目资费</dt>
+					<dt>入驻流程</dt>
+				</dl>
+				<p style="border-top: 1px solid gainsboro; margin-top: -80px;">&nbsp;</p>
+			</div>
+			<div style="margin-left: 510px;">
+				<table>
+					<tr class="kuan">
+						<td>友情链接 </td>
+						<td>手机云书网 </td>
+						<td>商务合作</td>
+						<td>关于我们</td>
+					</tr>
+				</table>
+			</div>
+			<div style="margin-left: 410px; margin-top: 20px;">
+				<table>
+					<tr class="kuan1">
+						<td>Copyright 2013-2025 云书网 版权所有 </td>
+						<td>食品经营许可证:JY14101930045252 </td>
+						<td> ICP备案号：豫B2-20130011-1</td>
+					</tr>
+				</table>
+			</div>
+			<div style="margin-left: 425px;">
+				<table>
+					<tr class="kuan2">
+						<td>出版物经营许可证 </td>
+						<td>网络文化经营许可证：豫网文[2019] 4019-076号 </td>
+						<td> 增值电信业务经营许可证</td>
+						<td> 营业执照</td>
+					</tr>
+				</table>
+			</div>
+			<div style="margin-left: 446px; margin-top: 20px;">
+				<table>
+					<tr class="kuan3">
+						<td><img src="img/footer-bottom-one.png" alt="" style="width: 40px;height: 42px;"> </td>
+						<td><img src="img/footer-bottom-two.png" alt=""style="width: 36px;height: 42px;"> </td>
+						<td> <img src="img/footer-bottom-fore.png" alt=""style="width: 112px;height: 42px;"></td>
+						<td> <img src="img/footer-bottom-three.png" alt=""style="width: 119px;height: 42px;"></td>
+						<td><img src="img/sslzhengshu.png" alt=""style="width: 114px;height: 42px;"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
