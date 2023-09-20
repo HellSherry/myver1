@@ -14,8 +14,8 @@ const connection = await mysql.createConnection({
  // 3 建立链接
 
 //  const [rows, fields] = await connection.execute('select * from makemon limit '+(page-1)+',1', []);
-const resul= await connection.execute("UPDATE `makemon` SET `question` = '"+mybody.question+"', `answer1` = '"+mybody.answer1+"', `answer2` = '"+mybody.answer2+"', `answer3` = '"+mybody.answer3+"', `answer4` = '"+mybody.answer4+"', `answer5` = '"+mybody.answer5+"', `answer6` = '"+mybody.answer6+"', `ranswer` = '"+mybody.ranswer+"', `parse` = '"+mybody.parse+"' where  `ttime` = '"+mybody.ttime+"' ");
-// 
+const resul= await connection.execute("UPDATE `makemon` SET `question` = ?, `answer1` = ?, `answer2` =?, `answer3` = ?, `answer4` = ?, `answer5` = ?, `answer6` = ?, `ranswer` = ?, `parse` = ? where  `ttime` = ? ",[mybody.question, mybody.answer1 ,mybody.answer2,mybody.answer3,mybody.answer4,mybody.answer5,mybody.answer6,mybody.ranswer,mybody.parse,mybody.ttime]);
+    // 
 console.log(resul)
  connection.end()
  console.log(resul[0])
