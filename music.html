@@ -6,13 +6,17 @@
 
     <title>Title</title>
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
-     <script src="https://s0.pstatp.com/cdn/expire-1-M/jquery/2.1.1/jquery.min.js"></script>
-
+    <script src="https://s0.pstatp.com/cdn/expire-1-M/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <style>
 
         * {
             margin: 0;
-            padding: 0
+            padding: 0;
+
         }
         html,body{
             height:100%
@@ -65,16 +69,22 @@
             gap: 20px;
             border-radius: 13px;
             backdrop-filter: blur(20px);
-            background-color: rgba(255,255,255, 0.005);
+            background-color: rgba(255,255,255, 0.05);
+        }
+        .break{
+            transition: all 200ms;
+            color: red;
+
         }
     </style>
 </head>
 <body>
 
-<div id="app" style="height: 100%">
+<div id="app" style="height: 100%"  v-loading.fullscreen.lock="fullscreenLoading">
     <div style="position: fixed;z-index: 1000;bottom: 0;border: 1px solid red;background-color: white;height: 60px;right: 30px">
         <img onclick="ssds()" :src="nowImg"
              style="height: 60px;width: 60px" alt="">
+<!--       <span>{{isSlide}}</span>-->
         <audio type="audio/flac" @play="aaa" @timeupdate="updatetime" autoplay
                controlslist="nodownload" ref='audioExample' :src="musrcURL.data[0].url"
                v-if="musrcURL.data[0].url != ''"
@@ -104,6 +114,7 @@
 
 
                     <tr
+                            onclick="ssds()"
                             @click="playMusic(song.id);nowName=song.name;nowImg=song.al.picUrl"
                             style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);border-radius: 10px;height: 100px;border-top: 0.52mm solid rgb(242,239,239);">
                         <div style="margin:8px"></div>
@@ -118,8 +129,18 @@
                                 <span v-for="artist in song.ar">{{artist.name}}</span>
                             </p>
 
-                        <td style="width: 40px">
+                        <td style="width: 100px">
                             <button onclick="ssds()"
+                                    style="
+ border: none;
+ color: #fff;
+ background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+ border-radius: 20px;
+ background-size: 100% auto;
+ font-family: inherit;
+ font-size: 17px;
+ padding: 0.6em 1.5em;
+"
                                     @click="playMusic(song.id);nowName=song.name;nowImg=song.al.picUrl">播放
                             </button>
                         </td>
@@ -129,23 +150,22 @@
                 </template>
             </table>
             <p style="width: 100px;overflow: hidden">{{ musrcURL.data[0].url }}</p>
-
-
         </center>
     </eeee>
-    <eeee id="qqds" style="display: none;background: url(https://assets.soujpg.com/souJpg/images/2MWnyN2THsrWbMrZLXyN2q.webp) no-repeat  0px 0px;background-size: cover;height: 100%;">
-        <center class="glass-container" style="height: 100%;overflow: scroll;z-index: -1">
+    <eeee id="qqds" :style="'background-image:url('+nowImg+');background-repeat: no-repeat ;background-position: center;display: none; width: 100%;background-size: cover;height: 100%'" >
+        <center @scroll="isSlide++" class="glass-container" style="height: 100% ;overflow: scroll;z-index: -1;">
             {{timenow}}
             <div :title="item.split(']')[0]"
                  v-for="item in companyCut(lyric.lrc.lyric)" :key='item'>
-
-                <p   @click="play(parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1]))" v-if="timenow>parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1])">
+<span  v-show="isSlide>12" style="position: absolute;right: 0;color: #00BCD4">{{item.split(']')[0]}}</span>
+             <p  class="break" @click="play(parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1]))" v-if="timenow>parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1])">
                     {{item.split(']')[1]}}</p>
-                <p   @click="play(parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1]))" style="color: white"
+                <p class="while"  @click="play(parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1]))" style="color: white"
                    v-if="timenow<=parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1])">
-                    {{item.split(']')[1]}}</p>
+                    {{item.split(']')[1]}}</p><br>
 
             </div>
+            <div style="height: 50%"></div>
         </center>
 
     </eeee>
@@ -168,6 +188,8 @@
 
         el: '#app',
         data: {
+            fullscreenLoading:false,
+            isSlide:1,
             timenow: 0,
             message: {
                 "result": {
@@ -4826,15 +4848,19 @@
                 "code": 200
             },
             nowName: '',
-            nowImg: ''
+            nowImg: 'https://assets.soujpg.com/souJpg/images/2MWnyN2THsrWbMrZLXyN2q.webp'
         },
 
         methods: {
             aaa() {
+
                 if (parseInt(audio.duration) === 30) {
                     $.ajax({
                         type: "get",
                         url: "https://haibara.chunal.cn/api/ccc?name=" + this.nowName,
+                        beforeSend: () => this.fullscreenLoading = true
+                        ,
+                        complete: () => this.fullscreenLoading = false,
                         success: response => {
                             audio.src = response;
 
@@ -4844,9 +4870,25 @@
                 }
             },
             updatetime() {
+                $(".break").css({"color":"#000","font-size":"inherit"})
+                $(".break:last").css({"color":"red","font-size":"x-large"})
+                this.timenow = parseInt(audio.currentTime)
+                this.isSlide-=2;
+                if (this.isSlide<0)
+                {
+                    this.isSlide=0
+                }
 
+                if (this.isSlide==0){
+                    $(".while:first")[0].scrollIntoView({behavior: "smooth",block:"center"})
+                }else  if (this.isSlide>12){
+                  clearTimeout(slideTime)
+                    this.isSlide=100
+                  var slideTime= setTimeout(() => {
+                        this.isSlide=1
+                    }, 3000);
+                }
 
-                this.timenow = audio.currentTime
             },
             play(time) {
 
@@ -4864,6 +4906,9 @@
                     type: "get",
                     url: "https://jishu.chunal.cn/cloudsearch",
                     data: "keywords=" + $("#searchMusic").val(),
+                    beforeSend: () => this.fullscreenLoading = true
+                    ,
+                    complete: () => this.fullscreenLoading = false,
                     success: response => (this.message = response)
                 })
             }, playMusic: function (id) {
@@ -4871,6 +4916,9 @@
                     type: "get",
                     url: "https://jishu.chunal.cn/song/url/v1",
                     data: "id=" + id + "&level=exhigh",
+                    beforeSend: () => this.fullscreenLoading = true
+                    ,
+                    complete: () => this.fullscreenLoading = false,
                     success: response => {
                         this.musrcURL = response;
                         audio = this.$refs.audioExample;
@@ -4881,6 +4929,9 @@
                     type: "get",
                     url: "https://jishu.chunal.cn/lyric",
                     data: "id=" + id,
+                    beforeSend: () => this.fullscreenLoading = true
+                    ,
+                    complete: () => this.fullscreenLoading = false,
                     success: response => (this.lyric = response)
                 })
             }
