@@ -42,12 +42,12 @@ const mysql = require('mysql2/promise');
 // mysql -hcontainers-us-west-207.railway.app -uroot -pxDAz1S9KXvs8LbZtXvSa --port 6923 --protocol=TCP railway
 // mysql -hcontainers-us-west-33.railway.app -uroot -pUwvbgZRHUVb24IHq7a3m --port 6862 --protocol=TCP railway
 const connection = await mysql.createConnection({
-    host:'containers-us-west-207.railway.app',   // 主机名 （服务器地址）
-    port:'6923',
-    user:'root',    //用户名
-    password:'xDAz1S9KXvs8LbZtXvSa',    // 密码
-    database:'railway',  // 写上自己要连接的数据库名字
-})
+     host:'mysql.sqlpub.com',   // 主机名 （服务器地址）
+     port:'3306',
+     user:'haibara',    //用户名
+     password:'190739131777d972',    // 密码
+     database:'haibara',  // 写上自己要连接的数据库名字
+ })
 
 // 3 建立链接
 
