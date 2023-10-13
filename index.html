@@ -12,59 +12,81 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script !src=""> window.index.css||document.write('<link rel="stylesheet" href="./style/theme/index.css">')</script>
     <style>
-        .el-textarea__inner
-        {text-shadow: 0 0 8px rgb(228, 250, 74);}
+        .el-textarea__inner {
+            text-shadow: 0 0 8px rgb(228, 250, 74);
+        }
+
+        img {
+            box-shadow: 0 0 2px rgb(124, 129, 86);;
+        }
+
+        .el-image-viewer__canvas img {
+            background-color: white;
+        }
     </style>
+    <link rel="stylesheet" href="css/quill.core.css">
+    <link rel="stylesheet" href="css/quill.snow.css">
+    <link rel="stylesheet" href="css/quill.bubble.css">
+    <link rel="stylesheet" href="css/lleditor1.css">
+    <script src="js/quill.js"></script>
+    <script src="js/vue-quill-editor.js"></script>
+    <script src="js/image-resize.min.js"></script>
+    <script src="js/quill.eeSourceBtn.js"></script>
+    <script src="js/llquill.js"></script>
 </head>
 <body>
-<div id="app" style="width: 80%;margin: 30px auto;position: relative;"  v-loading.fullscreen.lock="fullscreenLoading">
+<div id="app" style="width: 90%;margin: 30px auto;position: relative;" v-loading.fullscreen.lock="fullscreenLoading">
+
+
+    <!--        <ll-editor  :html="phone.question"  @getcontent="getLLContent"></ll-editor>-->
 
     <el-input-number v-model="no" @change="handleChange" :min="1" :max="2332" label="描述文字"></el-input-number>
-    "{{phone.ttime}}"{{phone.tname}}<br>
+    "{{phone.ttime}}"{{phone.tname}}
+    <el-button type="primary" style="margin-left: 30px" @click="insertAPicture" round>插入图片</el-button>
+    <el-image style="vertical-align: top" :src="'1/'+phone.ttime+'图片.png'">
+        <div slot="error" class="image-slot">
+            <i class="el-icon-picture-outline"></i>没有图片可跳过
+        </div>
+    </el-image>
 
-
-    <img :src="'1/'+phone.ttime+'题干.png'" alt="">
     <br>
-    <img  :src="'1/'+phone.ttime+'图片.png'" alt="没有图片可跳过">
-    <el-input
-            type="textarea"
-           autosize
-            placeholder="请输入题干"
-            v-model="phone.question">
-    </el-input>
-    <img :src="'1/'+phone.ttime+'A.png'" alt="">
-    <el-input
-            type="textarea"
-            autosize
-    placeholder="请输入答案1"
-    v-model="phone.answer1">
-    </el-input>
-    <img :src="'1/'+phone.ttime+'B.png'" alt="">
-    <el-button  style="position: absolute;right: 0" @click="phone.answer1=phone.answer1.replace(/\s*/g,'');">去answer1空格</el-button>
 
-    <el-input
-            type="textarea"
-            autosize
-            placeholder="请输入答案2"
-            v-model="phone.answer2">
-    </el-input>    <img :src="'1/'+phone.ttime+'C.png'" alt="">
 
-    <el-button  style="position: absolute;right: 0" @click="phone.answer2=phone.answer2.replace(/\s*/g,'');">去answer2空格</el-button>
-    <el-input
-            type="textarea"
-            autosize
-            placeholder="请输入答案3"
-            v-model="phone.answer3">
-    </el-input>    <img :src="'1/'+phone.ttime+'D.png'" alt="">
+    <!--    <img :src="'1/'+phone.ttime+'题干.png'" alt="">-->
+    <el-image
+            :src="'1/'+phone.ttime+'题干.png'"
+            :preview-src-list="['1/'+phone.ttime+'题干.png']">
+    </el-image>
+    <br>
+    <div>
+        <quill-editor :options="editorOption" style="width: 100%" v-model="phone.question"></quill-editor>
+    </div>
+    <div style="display: inline-block;width: 49.5%;">
+        <img :src="'1/'+phone.ttime+'A.png'" alt="">
+        <div>
+            <quill-editor :options="editorOption1" style="width: 100%;" v-model="phone.answer1"></quill-editor>
+        </div>
+    </div>
+    <div style="display: inline-block;width: 49.5%;">
+        <img :src="'1/'+phone.ttime+'B.png'" alt="">
+        <div>
+            <quill-editor :options="editorOption1" style="width: 100%;" v-model="phone.answer2"></quill-editor>
+        </div>
+    </div>
+    <div style="display: inline-block;width: 49.5%;">
+        <img :src="'1/'+phone.ttime+'C.png'" alt="">
+        <div>
+            <quill-editor :options="editorOption1" style="width: 100%;;" v-model="phone.answer3"></quill-editor>
+        </div>
+    </div>
+    <div style="display: inline-block;width: 49.5%;">
+        <img :src="'1/'+phone.ttime+'D.png'" alt="">
+        <div>
+            <quill-editor :options="editorOption1" style="width: 100%;;" v-model="phone.answer4"></quill-editor>
+        </div>
+    </div>
 
-    <el-button  style="position: absolute;right: 0" @click="phone.answer3=phone.answer3.replace(/\s*/g,'');">去answer3空格</el-button>
-    <el-input
-            type="textarea"
-            autosize
-            placeholder="请输入答案4"
-            v-model="phone.answer4">
-    </el-input>
-    <el-button  style="position: absolute;right: 0"  @click="phone.answer4=phone.answer4.replace(/\s*/g,'');">去answer4空格</el-button>
+
     <div v-show="phone.answer5!==''||phone.answer6!==''">
         <el-input
                 type="textarea"
@@ -80,55 +102,140 @@
         </el-input>
     </div>
 
-            正确答案： {{phone.ranswer}} <br>
+    正确答案： {{phone.ranswer}} <br>
 
     <img :src="'1/'+phone.ttime+'试题解析.png'" alt="没有解析">
-    <el-input
 
-        type="textarea"
-        autosize
-        placeholder="请输入解析"
-        v-model="phone.parse">
-    </el-input>
+    <div>
+        <quill-editor :options="editorOption" style="width: 100%"   v-model="phone.parse"></quill-editor>
+    </div>
 
-
-<el-button style="margin: 20px" @click="tijiao">提交</el-button>
+    <el-button type="primary" style="position: fixed;right: 3px;bottom: 20%" @click="tijiao" round>提交</el-button>
 
 
 </div>
 
 </body>
 <script !src="">
-  var Main = {
-    data() {
-      return {
-          fullscreenLoading:false,
-        phone: {},
-          no:1
-      }
-    },
-      mounted() {
-          $.ajax({
-              type: "get",
-              url: "api/aaa?page="+localStorage.getItem("no"),
-              success: (msg) => {
 
-                  this.no=localStorage.getItem("no")
-                  this.phone=JSON.parse(msg)
-              }
-          })
-      },
-    methods:{
-        tijiao(){
+
+    var Main = {
+        data() {
+            return {
+                editorOption: {
+                    modules: {
+                        imageResize: {
+                            displayStyles: {
+                                backgroundColor: 'black',
+                                border: 'none',
+                                color: 'white'
+                            },
+                            modules: ['Resize', 'DisplaySize', 'Toolbar']
+                        },
+
+                        eeSourceBtn: eeSourceBtn,
+                        toolbar: [
+                            ["bold", "italic", "underline", "strike"], // 加粗 斜体 下划线 删除线
+                            //  ["blockquote", "code-block"], // 引用  代码块
+                            ["code-block"], // 引用  代码块
+                            //   [{ header: 1 }, { header: 2 }], // 1、2 级标题
+                            [{list: "ordered"}, {list: "bullet"}], // 有序、无序列表
+                            //   [{ script: "sub" }, { script: "super" }], // 上标/下标
+                            [{indent: "-1"}, {indent: "+1"}], // 缩进
+                            //   [{ direction: "rtl" }], // 文本方向
+                            [{size: fontSizeStyle.whitelist}],
+                            [{font: fonts}],
+                            [{header: [1, 2, 3, 4, 5, 6]}], // 标题
+                            [{color: []}, {background: []}], // 字体颜色、字体背景颜色
+                            [{align: []}], // 对齐方式
+                            ["clean"], // 清除文本格式
+                            ["image", "video"], // 链接、图片、视频
+                        ],
+                    },
+                    placeholder: "请输入正文",
+                },
+                editorOption1: {
+                    modules: {
+                        imageResize: {
+                            displayStyles: {
+                                backgroundColor: 'black',
+                                border: 'none',
+                                color: 'white'
+                            },
+                            modules: ['Resize', 'DisplaySize', 'Toolbar']
+                        },
+                        eeSourceBtn: eeSourceBtn,
+                        toolbar: [
+                            //  ["bold", "italic", "underline", "strike"], // 加粗 斜体 下划线 删除线
+                            //  ["blockquote", "code-block"], // 引用  代码块
+                            ["code-block"], // 引用  代码块
+                            //   [{ header: 1 }, { header: 2 }], // 1、2 级标题
+                            [{list: "ordered"}, {list: "bullet"}], // 有序、无序列表
+                            //   [{ script: "sub" }, { script: "super" }], // 上标/下标
+                            [{indent: "-1"}, {indent: "+1"}], // 缩进
+                            //   [{ direction: "rtl" }], // 文本方向
+                            //  [{ size: fontSizeStyle.whitelist }],
+                            //   [{ font: fonts }],
+                            //  [{ header: [1, 2, 3, 4, 5, 6] }], // 标题
+                            //   [{ color: [] }, { background: [] }], // 字体颜色、字体背景颜色
+                            [{align: []}], // 对齐方式
+                            ["clean"], // 清除文本格式
+                            ["image", "video"], // 链接、图片、视频
+                        ],
+                    },
+                    placeholder: "请输入正文",
+                },
+
+
+                fullscreenLoading: false,
+                phone: {},
+                no: 1
+            }
+        },
+        mounted() {
+            $.ajax({
+                type: "get",
+                url: "api/aaa1?page="+localStorage.getItem("no"),
+                success: (msg) => {
+
+                    this.no=localStorage.getItem("no")
+                    this.phone=JSON.parse(msg)
+                }
+            })
+        },
+        methods: {
+            insertAPicture() {
+                this.$prompt('请输入链接', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    inputErrorMessage: '图片格式不正确'
+                }).then(({value}) => {
+                    this.phone.question = this.phone.question + "<img src='" + value + "'>"
+                    this.$message({
+                        type: 'success',
+                        message: '你的图片链接是: ' + value
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '取消输入'
+                    });
+                });
+            },
+            getLLContent(html) {
+                console.log('html:', html);
+                this.html = html
+            },
+            tijiao() {
 
 
                 $.ajax({
                     type: "post",
-                    url: "api/update",
+                    url: "api/update1",
                     contentType: "application/json;charset=utf-8",
-       
-                  
-                     data:JSON.stringify(this.phone),
+
+
+                    data:JSON.stringify(this.phone),
                     success: (msg) => {
                         if (msg.trim()!=='false'){
                             this.$notify({
@@ -147,25 +254,26 @@
                     }
                 })
 
-        },
-        handleChange(val){
-            $.ajax({
-                type: "get",
-                url: "api/aaa?page="+val,
-                beforeSend: () => this.fullscreenLoading = true
-                ,
-                complete: () => this.fullscreenLoading = false,
-                success: (msg) => {
-                    localStorage.setItem("no",val)
-                    this.phone=msg
+            },
+            handleChange(val) {
+                $.ajax({
+                    type: "get",
+                    url: "api/aaa1?page="+val,
+                    beforeSend: () => this.fullscreenLoading = true
+                    ,
+                    complete: () => this.fullscreenLoading = false,
+                    success: (msg) => {
+                        localStorage.setItem("no",val)
+                        this.phone=msg
 
-                }
-            })
+                    }
+                })
+            }
+
         }
-
     }
-  }
-  var Ctor = Vue.extend(Main)
-  new Ctor().$mount('#app')
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
 </script>
+
 </html>
