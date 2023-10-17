@@ -125,6 +125,7 @@
     var Main = {
         data() {
             return {
+                isUpdateing:false,
                 editorOption: {
                     modules: {
                         imageResize: {
@@ -219,7 +220,6 @@
 
                     this.no=localStorage.getItem("no")
                        this.phone=msg
-                    console.log(this.phone)
                 }
             })
         },
@@ -247,6 +247,10 @@
                 this.html = html
             },
             tijiao() {
+                if( this.isUpdateing){
+                  this.$message('提交中');
+                    return;
+                }
 
 
                 $.ajax({
@@ -256,6 +260,9 @@
 
 
                     data:JSON.stringify(this.phone),
+                     beforeSend: () => this.isUpdateing = true
+                    ,
+                    complete: () => this.isUpdateing = false,
                     success: (msg) => {
                         if (msg.trim()!=='false'){
                             this.$notify({
