@@ -203,6 +203,13 @@
                     e.preventDefault();
                    this.tijiao();
                 }
+                if(e.key=='ArrowLeft'&&(navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)){
+                    e.preventDefault();
+                  this.handleChange(--this.no) ;
+                }
+                if(e.key=='ArrowRight'&&(navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)){
+                    e.preventDefault();
+                    this.handleChange(++this.no) ;      
             }, false);
             $.ajax({
                 type: "get",
