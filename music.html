@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=360,minimum-scale=0.5,maximum-scale=1.0,user-scalable=no, initial-scale=1.0"/>
 
-    <title>Title</title>
+    <title>MUSIC</title>
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
     <script src="https://s0.pstatp.com/cdn/expire-1-M/jquery/2.1.1/jquery.min.js"></script>
     <!-- 引入样式 -->
@@ -159,10 +159,10 @@
                  v-for="item in companyCut(lyric.lrc.lyric)" :key='item'>
 <span  v-show="isSlide>14" style="position: absolute;right: 0;color: #00BCD4">{{item.split(']')[0]}}</span>
              <p  class="break" @click="play(parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1]))" v-if="timenow>parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1])">
-                    {{item.split(']')[1]}}</p>
+                    {{item.split(']')[1]}}<span v-if="item.split(']')[1]==='\n'">· · · · · ·<br></span></p>
                 <p class="while"  @click="play(parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1]))" style="color: white"
                    v-if="timenow<=parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[0])*60+parseInt(item.split(']')[0].substring(0,item.split(']')[0].indexOf('.')).split(':')[1])">
-                    {{item.split(']')[1]}}</p><br>
+                    {{item.split(']')[1]}}<span v-if="item.split(']')[1]==='\n'">· · · · · ·<br></span></p><br>
 
             </div>
             <div style="height: 50%"></div>
@@ -4868,6 +4868,7 @@
             },
             updatetime() {
                 $(".break").css({"color":"#000","font-size":"inherit"})
+                $(".while").css({"color":"#FFF","font-size":"inherit"})
                 $(".break:last").css({"color":"red","font-size":"x-large"})
                 this.timenow = parseInt(audio.currentTime)
                 this.isSlide-=2;
