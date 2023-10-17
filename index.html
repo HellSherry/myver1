@@ -62,38 +62,41 @@
         <quill-editor :options="editorOption" style="width: 100%" v-model="phone.question"></quill-editor>
     </div>
     <div style="display: inline-block;width: 49.5%;">
-        <img :src="'2/'+phone.ttime+'A.png'" alt="">
+        <img :style="'background-color: #'+(phone.ranswer.indexOf('1')===-1?'FF00':'00FF')+'007F'"  :src="'2/'+phone.ttime+'A.png'" alt="">
         <div>
             <quill-editor :options="editorOption1" style="width: 100%;" v-model="phone.answer1"></quill-editor>
         </div>
     </div>
     <div style="display: inline-block;width: 49.5%;">
-        <img :src="'2/'+phone.ttime+'B.png'" alt="">
+        <img :style="'background-color: #'+(phone.ranswer.indexOf('2')===-1?'FF00':'00FF')+'007F'"  :src="'2/'+phone.ttime+'B.png'" alt="">
         <div>
             <quill-editor :options="editorOption1" style="width: 100%;" v-model="phone.answer2"></quill-editor>
         </div>
     </div>
     <div style="display: inline-block;width: 49.5%;">
-        <img :src="'2/'+phone.ttime+'C.png'" alt="">
+        <img :style="'background-color: #'+(phone.ranswer.indexOf('3')===-1?'FF00':'00FF')+'007F'"  :src="'2/'+phone.ttime+'C.png'" alt="">
         <div>
             <quill-editor :options="editorOption1" style="width: 100%;;" v-model="phone.answer3"></quill-editor>
         </div>
     </div>
     <div style="display: inline-block;width: 49.5%;">
-        <img :src="'2/'+phone.ttime+'D.png'" alt="">
+        <img :style="'background-color: #'+(phone.ranswer.indexOf('4')===-1?'FF00':'00FF')+'007F'"  :src="'2/'+phone.ttime+'D.png'" alt="">
         <div>
             <quill-editor :options="editorOption1" style="width: 100%;;" v-model="phone.answer4"></quill-editor>
         </div>
     </div>
 
 
-    <div v-show="phone.answer5!==''||phone.answer6!==''">
+    <div v-if="phone.answer5!==''||phone.answer6!==''">
+        
+        <img :style="'background-color: #'+(phone.ranswer.indexOf('4')===-1?'FF00':'00FF')+'007F'"  :src="'2/'+phone.ttime+'E.png'" alt="">
         <el-input
                 type="textarea"
                 autosize
                 placeholder="请输入答案5"
                 v-model="phone.answer5">
         </el-input>
+        <img :style="'background-color: #'+(phone.ranswer.indexOf('4')===-1?'FF00':'00FF')+'007F'"  :src="'2/'+phone.ttime+'F.png'" alt="">
         <el-input
                 type="textarea"
                 autosize
