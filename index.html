@@ -209,7 +209,8 @@
                 }
                 if(e.key=='ArrowRight'&&(navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)){
                     e.preventDefault();
-                    this.handleChange(++this.no) ;      
+                    this.handleChange(++this.no) ;   
+                }
             }, false);
             $.ajax({
                 type: "get",
