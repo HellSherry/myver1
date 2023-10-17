@@ -199,7 +199,8 @@
                 success: (msg) => {
 
                     this.no=localStorage.getItem("no")
-                    this.phone=JSON.parse(msg)
+                    this.phone=JSON.parse(msg.trim())
+                    console.log(this.phone)
                 }
             })
         },
