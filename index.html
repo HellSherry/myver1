@@ -196,6 +196,14 @@
             }
         },
         mounted() {
+                window.addEventListener("keydown", (e)=> {
+                //可以判断是不是mac，如果是mac,ctrl变为花键
+                //event.preventDefault() 方法阻止元素发生默认的行为。
+                if((e.key=='s'||e.key=='S')&&(navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)){
+                    e.preventDefault();
+                   this.tijiao();
+                }
+            }, false);
             $.ajax({
                 type: "get",
                 url: "api/aaa1?page="+localStorage.getItem("no"),
