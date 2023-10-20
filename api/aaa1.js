@@ -67,7 +67,7 @@ const connection = await mysql.createConnection({
 //     // 6 处理结果
 //     console.log(result)
 // })
-const [rows, fields] = await connection.execute('select * from makemon  WHERE tname ='Java开发之框架基础技术' limit '+(page-1)+',1', []);
+const [rows, fields] = await connection.execute('select * from makemon  limit '+(page-1)+',1', []);
 console.log(rows);
 connection.end()
 res.json(rows[0])
