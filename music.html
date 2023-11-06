@@ -4902,7 +4902,7 @@
 
                 $.ajax({
                     type: "get",
-                    url: "http://bingai.lzy520.fun/cloudsearch",
+                    url: "https://bingai.lzy520.fun/cloudsearch",
                     data: "keywords=" + $("#searchMusic").val(),
                     beforeSend: () => this.fullscreenLoading = true
                     ,
@@ -4912,7 +4912,7 @@
             }, playMusic: function (id) {
                 $.ajax({
                     type: "get",
-                    url: "http://bingai.lzy520.fun/song/url/v1",
+                    url: "https://bingai.lzy520.fun/song/url/v1",
                     data: "id=" + id + "&level=exhigh",
                     beforeSend: () => this.fullscreenLoading = true
                     ,
@@ -4925,7 +4925,7 @@
                 })
                 $.ajax({
                     type: "get",
-                    url: "http://bingai.lzy520.fun/lyric",
+                    url: "https://bingai.lzy520.fun/lyric",
                     data: "id=" + id,
                     beforeSend: () => this.fullscreenLoading = true
                     ,
