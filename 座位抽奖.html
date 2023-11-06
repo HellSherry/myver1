@@ -56,11 +56,12 @@
                 <el-carousel type="card" direction="vertical" height="234px"
                              style="padding-left: 8px;padding-top: 10px;width: 100%;display: inline-block"
                              :interval="200"
+                             ref="carousel"
                              :autoplay="play1"
                              @change="aaa"
                              indicator-position="none"
                 >
-                    <el-carousel-item v-for="item in arr" :key="item">
+                    <el-carousel-item  v-for="item in arr" :key="item">
                         <h3 class="medium">{{ item }}</h3>
                     </el-carousel-item>
                 </el-carousel>
@@ -85,7 +86,6 @@
         <br>
         <br>
         <br>
-
         <div>
             <button v-for="item in num"
                     :style="'margin: 2px;width: 60px;height: 40px;background-color: rgba('+(arr1.indexOf(item)==-1?'255,0':'0,255')+',0,0.5)'">
@@ -111,7 +111,7 @@
     var Main = {
         data() {
             return {
-                isNotFirst:true,
+                // isNotFirst: true,
                 num: 30,
                 arr: [],
                 arr1: [],
@@ -130,20 +130,29 @@
         },
         watch: {
             async num(val) {
+this.c1=true
+                    clearTimeout(timer);
+                    timer = setTimeout(() =>{
+                        this.updateNum(val)
+                    }, 500);
+
+            }
+
+        },
+        methods: {
+            updateNum(val) {
+
                 this.arr1 = []
                 this.arr = []
                 this.arrBack = []
-                this.c1=false
-                this.play1=false
-                this.isNotFirst=false
+                this.c1 = false
+                this.play1 = false
+                // this.isNotFirst = false
                 for (let i = 1; i <= val; i++) {
                     this.arr.push(i)
                 }
                 console.log(this.arr)
-            }
-        },
-        methods: {
-
+            },
 
             back() {
                 if (this.arrBack.length > 0) {
@@ -157,6 +166,16 @@
                     });
                 }
 
+            }, throttle(func, wait) {
+                let timeout;
+                return function () {
+                    if (!timeout) {
+                        timeout = setTimeout(function () {
+                            func();
+                            timeout = null;
+                        }, wait);
+                    }
+                }
             },
             async outOfOrder() {
                 if (this.play1) {
@@ -197,15 +216,15 @@
                 console.log(this.arr1)
             },
             async aaa(item, isd) {
-                console.log(item)
-                console.log(this.c1)
                 if (this.c1) {
                     if (this.arr[item] === this.arr1[0]) {
+                        this.play1 = false
+                        this.$refs.carousel.setActiveItem(item)
                         this.arr1.splice(0, 1)
                         this.c1 = false
-                        console.log(this.arr[item])
+                        // console.log(this.arr[item])
                         this.arrBack.push(this.arr[item])
-                        this.play1 = false
+
                         this.$notify({
                             title: '提示',
                             message: this.arr[item]
@@ -218,11 +237,12 @@
                                 } else {
 
                                 }
-                            }, 400)
+                            }, 100)
                         });
-                        if (this.isNotFirst){
+                        // if (this.isNotFirst) {
+                        if (this.arrBack.length!==0)
                             this.arr.splice(item, 1)
-                        }else this.isNotFirst=true
+                        // } else this.isNotFirst = true
 
 
                     }
