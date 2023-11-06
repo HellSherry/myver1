@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script !src=""> window.index.css || document.write('<link rel="stylesheet" href="./style/theme/index.css">')</script>
     <style>
-        .el-carousel__item.is-active.el-carousel__item--card.is-in-stage h3{
+        .el-carousel__item.is-active.el-carousel__item--card.is-in-stage h3 {
             font-size: x-large;
 
         }
+
         .el-carousel__item h3 {
             text-align: center;
             color: #475669;
@@ -25,17 +26,19 @@
             margin: 0;
         }
 
-        .el-carousel__item h3{
+        .el-carousel__item h3 {
             line-height: 40px;
 
         }
-        .el-carousel__item{
+
+        .el-carousel__item {
             padding: 14px 0;
             box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
             border-radius: 12px;
             height: 40px;
         }
-        .el-notification.right{
+
+        .el-notification.right {
             width: 120px;
         }
 
@@ -43,42 +46,60 @@
     </style>
 </head>
 <body>
-<div id="app" style="transform: scale(100%);width: 90%;margin: 30px auto;position: relative;" v-loading.fullscreen.lock="fullscreenLoading">
-   <div style="width: 300px;display: inline-block">
+<div id="app" style="transform: scale(100%);width: 90%;margin: 30px auto;position: relative;"
+     v-loading.fullscreen.lock="fullscreenLoading">
+    <div style="width: 300px;display: inline-block">
 
-    <div style="position: relative;width: 600px;margin: 30px auto">
-        <div style="position: absolute;width: 100%;height: 100%;z-index: 100"></div>
-        <div style="display: inline-block;width: 300px;margin-right: -120px">
-            <el-carousel type="card" direction="vertical" height="234px" style="padding-left: 8px;padding-top: 10px;width: 100%;display: inline-block" :interval="200"
-                         :autoplay="play1"
-                         @change="aaa"
-                         indicator-position="none"
-            >
-                <el-carousel-item v-for="item in arr" :key="item">
-                    <h3 class="medium">{{ item }}</h3>
-                </el-carousel-item>
-            </el-carousel>
+        <div style="position: relative;width: 300px;margin: 30px auto">
+            <div style="position: absolute;width: 100%;height: 100%;z-index: 100"></div>
+            <div style="display: inline-block;width: 300px;margin-right: -120px">
+                <el-carousel type="card" direction="vertical" height="234px"
+                             style="padding-left: 8px;padding-top: 10px;width: 100%;display: inline-block"
+                             :interval="200"
+                             :autoplay="play1"
+                             @change="aaa"
+                             indicator-position="none"
+                >
+                    <el-carousel-item v-for="item in arr" :key="item">
+                        <h3 class="medium">{{ item }}</h3>
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+
+        </div>
+        <br>
+
+        <div style="position: fixed;z-index: 10000">
+            <!--        <button @click="isAutoPlay=!isAutoPlay;outOfOrder">sdfasf</button>-->
+            <el-button @click="outOfOrder">开始</el-button>
+            <el-button @click="back">回退</el-button>
+
+
+        </div>
+    </div>
+    <div style="margin-top: 30px;width: 400px;display: inline-block;">
+        <div style="float: left">
+            座位数：
+            <el-input-number v-model="num" :min="1" :max="100" label="描述文字"></el-input-number>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <div>
+            <button v-for="item in num"
+                    :style="'margin: 2px;width: 60px;height: 40px;background-color: rgba('+(arr1.indexOf(item)==-1?'255,0':'0,255')+',0,0.5)'">
+                {{item}}
+            </button>
         </div>
 
     </div>
-    <br>
-
-    <div style="position: fixed;z-index: 10000">
-<!--        <button @click="isAutoPlay=!isAutoPlay;outOfOrder">sdfasf</button>-->
-        <el-button @click="outOfOrder">开始</el-button>
-        <el-button @click="back">回退</el-button>
-
-
-
-    </div>
-</div>
-    <div style="margin-top: 60px;width: 400px;display: inline-block;">
-            <button v-for="item in 30" :style="'margin: 2px;width: 60px;height: 40px;background-color: rgba('+(arr1.indexOf(item)==-1?'255,0':'0,255')+',0,0.5)'" >{{item}}</button>
-    </div>
     <div style="margin-top: 60px">
-        <button v-for="item in arrBack" style="border: 0px;background-color: rgba(0,255,0,0.5);border-radius: 50%;width: 40px;height: 40px;margin: 2px;">  {{item}}  </button>
+        <button v-for="item in arrBack"
+                style="border: 0px;background-color: rgba(0,255,0,0.5);border-radius: 50%;width: 40px;height: 40px;margin: 2px;">
+            {{item}}
+        </button>
     </div>
-
 
 
 </div>
@@ -87,33 +108,49 @@
 <script !src="">
 
 
-
     var Main = {
         data() {
             return {
-
+                isNotFirst:true,
+                num: 30,
                 arr: [],
                 arr1: [],
                 howtime: 4,
                 play1: false,
-                c1:false,
-arrBack:[],
+                c1: false,
+                arrBack: [],
                 isAutoPlay: true
                 , fullscreenLoading: false
             }
         },
         mounted() {
-            for (let i = 1; i <=30; i++) {
+            for (let i = 1; i <= this.num; i++) {
                 this.arr.push(i)
             }
         },
+        watch: {
+            async num(val) {
+                this.arr1 = []
+                this.arr = []
+                this.arrBack = []
+                this.c1=false
+                this.play1=false
+                this.isNotFirst=false
+                for (let i = 1; i <= val; i++) {
+                    this.arr.push(i)
+                }
+                console.log(this.arr)
+            }
+        },
         methods: {
-            back(){
-                if (this.arrBack.length>0){
-                    this.arr1.push(this.arrBack[this.arrBack.length-1])
-                    this.arr.push(this.arrBack[this.arrBack.length-1])
-                    this.arrBack.splice(this.arrBack.length-1,1)
-                }else {
+
+
+            back() {
+                if (this.arrBack.length > 0) {
+                    this.arr1.push(this.arrBack[this.arrBack.length - 1])
+                    this.arr.push(this.arrBack[this.arrBack.length - 1])
+                    this.arrBack.splice(this.arrBack.length - 1, 1)
+                } else {
                     this.$message({
                         message: '回退不了',
                         type: 'error'
@@ -121,8 +158,8 @@ arrBack:[],
                 }
 
             },
-          async  outOfOrder() {
-                if (this.play1){
+            async outOfOrder() {
+                if (this.play1) {
                     this.$message({
                         message: '恭喜你，这是一条成功消息',
                         type: 'success'
@@ -130,7 +167,7 @@ arrBack:[],
                     return;
                 }
 
-                this.play1=true
+                this.play1 = true
 
                 var aa = setInterval(() => {
                     console.log(this.howtime)
@@ -153,21 +190,21 @@ arrBack:[],
 
                 // if (this.arr1.length === 0) {
 
-                    this.arr1=[...this.arr]
+                this.arr1 = [...this.arr]
                 // }
                 this.arr1.sort(() => Math.random() - 0.5)
 
                 console.log(this.arr1)
             },
-           async aaa(item, isd) {
+            async aaa(item, isd) {
                 console.log(item)
-               console.log(this.c1)
+                console.log(this.c1)
                 if (this.c1) {
                     if (this.arr[item] === this.arr1[0]) {
-                        this.arr1.splice(0,1)
+                        this.arr1.splice(0, 1)
                         this.c1 = false
                         console.log(this.arr[item])
-                       this. arrBack.push(this.arr[item])
+                        this.arrBack.push(this.arr[item])
                         this.play1 = false
                         this.$notify({
                             title: '提示',
@@ -183,8 +220,10 @@ arrBack:[],
                                 }
                             }, 400)
                         });
+                        if (this.isNotFirst){
+                            this.arr.splice(item, 1)
+                        }else this.isNotFirst=true
 
-                        this.arr.splice(item, 1)
 
                     }
                 }
