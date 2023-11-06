@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://s0.pstatp.com/cdn/expire-1-M/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+    <script>window.Vue || document.write('<script src="js/vue.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="js/jquery-3.4.1.min.js"><\/script>')</script>
+    <script>window.elementui.js || document.write('<script src="js/elementui.js"><\/script>')</script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script !src=""> window.index.css || document.write('<link rel="stylesheet" href="./style/theme/index.css">')</script>
+    <style>
+        .el-carousel__item.is-active.el-carousel__item--card.is-in-stage h3{
+            font-size: x-large;
+
+        }
+        .el-carousel__item h3 {
+            text-align: center;
+            color: #475669;
+            font-size: 14px;
+            opacity: 0.75;
+            line-height: 200px;
+            margin: 0;
+        }
+
+        .el-carousel__item h3{
+            line-height: 40px;
+
+        }
+        .el-carousel__item{
+            padding: 14px 0;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            height: 40px;
+        }
+        .el-notification.right{
+            width: 120px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="app" style="transform: scale(100%);width: 90%;margin: 30px auto;position: relative;" v-loading.fullscreen.lock="fullscreenLoading">
+   <div style="width: 300px;display: inline-block">
+
+    <div style="position: relative;width: 600px;margin: 30px auto">
+        <div style="position: absolute;width: 100%;height: 100%;z-index: 100"></div>
+        <div style="display: inline-block;width: 300px;margin-right: -120px">
+            <el-carousel type="card" direction="vertical" height="234px" style="padding-left: 8px;padding-top: 10px;width: 100%;display: inline-block" :interval="200"
+                         :autoplay="play1"
+                         @change="aaa"
+                         indicator-position="none"
+            >
+                <el-carousel-item v-for="item in arr" :key="item">
+                    <h3 class="medium">{{ item }}</h3>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+
+    </div>
+    <br>
+
+    <div style="position: fixed;z-index: 10000">
+<!--        <button @click="isAutoPlay=!isAutoPlay;outOfOrder">sdfasf</button>-->
+        <el-button @click="outOfOrder">开始</el-button>
+        <el-button @click="back">回退</el-button>
+
+
+
+    </div>
+</div>
+    <div style="margin-top: 60px;width: 400px;display: inline-block;">
+            <button v-for="item in 30" :style="'margin: 2px;width: 60px;height: 40px;background-color: rgba('+(arr1.indexOf(item)==-1?'255,0':'0,255')+',0,0.5)'" >{{item}}</button>
+    </div>
+    <div style="margin-top: 60px">
+        <button v-for="item in arrBack" style="border: 0px;background-color: rgba(0,255,0,0.5);border-radius: 50%;width: 40px;height: 40px;margin: 2px;">  {{item}}  </button>
+    </div>
+
+
+
+</div>
+
+</body>
+<script !src="">
+
+
+
+    var Main = {
+        data() {
+            return {
+
+                arr: [],
+                arr1: [],
+                howtime: 4,
+                play1: false,
+                c1:false,
+arrBack:[],
+                isAutoPlay: true
+                , fullscreenLoading: false
+            }
+        },
+        mounted() {
+            for (let i = 1; i <=30; i++) {
+                this.arr.push(i)
+            }
+        },
+        methods: {
+            back(){
+                if (this.arrBack.length>0){
+                    this.arr1.push(this.arrBack[this.arrBack.length-1])
+                    this.arr.push(this.arrBack[this.arrBack.length-1])
+                    this.arrBack.splice(this.arrBack.length-1,1)
+                }else {
+                    this.$message({
+                        message: '回退不了',
+                        type: 'error'
+                    });
+                }
+
+            },
+          async  outOfOrder() {
+                if (this.play1){
+                    this.$message({
+                        message: '恭喜你，这是一条成功消息',
+                        type: 'success'
+                    });
+                    return;
+                }
+
+                this.play1=true
+
+                var aa = setInterval(() => {
+                    console.log(this.howtime)
+                    if (this.howtime-- === 0) {
+                        this.c1 = true;
+                        this.howtime = 4;
+                        clearInterval(aa)
+                    }
+                }, 1000);
+                await new Promise((resolve) => {
+                    let timer = setInterval(() => {
+                        if (this.c1) {
+                            clearInterval(timer)
+                            resolve(true)
+                        } else {
+
+                        }
+                    }, 400)
+                });
+
+                // if (this.arr1.length === 0) {
+
+                    this.arr1=[...this.arr]
+                // }
+                this.arr1.sort(() => Math.random() - 0.5)
+
+                console.log(this.arr1)
+            },
+           async aaa(item, isd) {
+                console.log(item)
+               console.log(this.c1)
+                if (this.c1) {
+                    if (this.arr[item] === this.arr1[0]) {
+                        this.arr1.splice(0,1)
+                        this.c1 = false
+                        console.log(this.arr[item])
+                       this. arrBack.push(this.arr[item])
+                        this.play1 = false
+                        this.$notify({
+                            title: '提示',
+                            message: this.arr[item]
+                        });
+                        await new Promise((resolve) => {
+                            let timer = setInterval(() => {
+                                if (this.play1) {
+                                    clearInterval(timer)
+                                    resolve(true)
+                                } else {
+
+                                }
+                            }, 400)
+                        });
+
+                        this.arr.splice(item, 1)
+
+                    }
+                }
+
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+
+</html>
