@@ -127,6 +127,21 @@
             for (let i = 1; i <= this.num; i++) {
                 this.arr.push(i)
             }
+                setTimeout(() => {
+                if (!(history.state && history.state.target == "Final")) {
+                    window.history.pushState({target: "MeanSure", random: Math.random()}, "", location.href);
+                    window.history.pushState({target: "Final", random: Math.random()}, "", location.href);
+                }
+                window.addEventListener("popstate",  (e)=> {
+                    if (e.state && e.state.target == "MeanSure") {
+                        history.forward();
+                        this.$message({
+                            message: '转盘已经开始,回退不了',
+                            type: 'error'
+                        });
+                    }
+                }, false);
+            }, 500);
         },
         watch: {
             async num(val) {
