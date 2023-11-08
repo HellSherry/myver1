@@ -106,7 +106,9 @@
 
 </body>
 <script !src="">
-
+ window.onbeforeunload = function(){
+        return "是否要离开";
+    }
 
     var Main = {
         data() {
