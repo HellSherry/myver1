@@ -16,14 +16,14 @@ module.exports =async (req, res) => {
   })
 
   await  connection.execute(
-      'select * from ai where ask = ? ', ['hh'],
+      'select * from ai where ask = ? ', [ask],
       function (err, results, fields) {
         if (err) {
           console.log('[SELECT ERROR] - ', err.message);
           return;
         }
         if (results[0] == undefined) {
-          https.get('https://v1.apigpt.cn?apitype=sql&q=hh', (response) => {
+          https.get('https://v1.apigpt.cn?apitype=sql&q='+ask, (response) => {
             let todo = '';
 
             // called when a data chunk is received.
